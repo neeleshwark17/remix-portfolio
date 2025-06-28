@@ -9,7 +9,6 @@ uniform float opacity;
 
 uniform float time;
 varying vec2 vUv;
-varying vec3 newPosition;
 varying float noise;
 
 #include <common>
@@ -40,44 +39,56 @@ varying float noise;
 
 void main() {
 
-	#include <clipping_planes_fragment>
+  #include <clipping_planes_fragment>
 
-  vec3 color = vec3(vUv * (0.2 - 2.0 * noise), 1.0);
-  vec3 finalColors = vec3(color.b * 1.5, color.r, color.r);
-  vec4 diffuseColor = vec4(cos(finalColors * noise * 3.0), 1.0);
+  // Lime green base: #B6F500
+  vec3 baseColor = vec3(0.7137, 0.9608, 0.0);
+
+  // Highlight center with time-based pulse
+  float pulse = 0.2 + 0.5 * sin(time + vUv.x * 10.0 + vUv.y * 10.0);
+
+  // Blend green with white for softness and light
+  vec3 finalColor = mix(baseColor, vec3(1.0), pulse * 0.3 + noise * 0.2);
+
+  vec4 diffuseColor = vec4(finalColor, 1.0);
+  vec3 totalEmissiveRadiance = finalColor * 0.3;
+
   ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), vec3(0.0), vec3(0.0));
-  vec3 totalEmissiveRadiance = emissive;
 
-	#include <logdepthbuf_fragment>
-	#include <map_fragment>
-	#include <color_fragment>
-	#include <alphamap_fragment>
-	#include <alphatest_fragment>
-	#include <alphahash_fragment>
-	#include <specularmap_fragment>
-	#include <normal_fragment_begin>
-	#include <normal_fragment_maps>
-	#include <emissivemap_fragment>
+  #include <logdepthbuf_fragment>
+  #include <map_fragment>
+  #include <color_fragment>
+  #include <alphamap_fragment>
+  #include <alphatest_fragment>
+  #include <alphahash_fragment>
+  #include <specularmap_fragment>
+  #include <normal_fragment_begin>
+  #include <normal_fragment_maps>
+  #include <emissivemap_fragment>
 
-	// accumulation
-	#include <lights_phong_fragment>
-	#include <lights_fragment_begin>
-	#include <lights_fragment_maps>
-	#include <lights_fragment_end>
+  // accumulation
+  #include <lights_phong_fragment>
+  #include <lights_fragment_begin>
+  #include <lights_fragment_maps>
+  #include <lights_fragment_end>
 
-	// modulation
-	#include <aomap_fragment>
+  // modulation
+  #include <aomap_fragment>
 
-	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
+  vec3 outgoingLight = reflectedLight.directDiffuse 
+                     + reflectedLight.indirectDiffuse 
+                     + reflectedLight.directSpecular 
+                     + reflectedLight.indirectSpecular 
+                     + totalEmissiveRadiance;
 
-	#include <envmap_fragment>
-	#include <opaque_fragment>
-	#include <tonemapping_fragment>
-	#include <colorspace_fragment>
-	#include <fog_fragment>
-	#include <premultiplied_alpha_fragment>
-	#include <dithering_fragment>
+  #include <envmap_fragment>
+  #include <opaque_fragment>
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+  #include <fog_fragment>
+  #include <premultiplied_alpha_fragment>
+  #include <dithering_fragment>
 
   gl_FragColor = vec4(outgoingLight, diffuseColor.a);
 }
-`; 
+`;

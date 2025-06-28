@@ -97,19 +97,7 @@ export function Error({ error }) {
                 <Text className={styles.description} data-visible={visible} as="p">
                   {message}
                 </Text>
-                {flatlined ? (
-                  <Button
-                    secondary
-                    iconHoverShift
-                    className={styles.button}
-                    data-visible={visible}
-                    href="https://www.youtube.com/watch?v=EuQzHGcsjlA"
-                    icon="chevron-right"
-                  >
-                    Emotional support
-                  </Button>
-                ) : (
-                  <Button
+                <Button
                     secondary
                     iconHoverShift
                     className={styles.button}
@@ -118,8 +106,7 @@ export function Error({ error }) {
                     icon="chevron-right"
                   >
                     Back to homepage
-                  </Button>
-                )}
+                </Button>
               </div>
             </div>
 

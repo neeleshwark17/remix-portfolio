@@ -239,7 +239,7 @@ void main() {
 
   vUv = uv;
   vec3 pos = position;
-  noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
+  noise = 6.0 *  -.10 * turbulence( .5 * normal + time );
   float b = 5.0 * pnoise( 1.15 * position + vec3( 2.0 * time ), vec3( 100.0 ) );
   float displacement = - 60. * noise + b;
 

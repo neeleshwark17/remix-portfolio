@@ -22,7 +22,7 @@ const ProfileText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I’m Neeleshwar, currently I live in Patiala working as a Full stack Engineer at{' '}
-      <Link href="sleepiz.com">Sleepiz AG</Link>. My projects include NFT MarketPlace,
+      <Link href="experience">Sleepiz AG</Link>. My projects include NFT MarketPlace,
       Online betting platform. No code NFT generator, 3D interactive websites, cloud drive storage
       and more. If you’re interested in the tools and software, check out my{' '}
       <Link href="/techstack">TechStack</Link>.

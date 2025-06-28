@@ -152,8 +152,8 @@
     }
 
     &::after {
-      --background1: color-mix(in lab, var(--background) 70%, transparent);
-      --background2: color-mix(in lab, var(--background) 90%, transparent);
+      --background1: color-mix(in lab, var(--background) 10%, transparent);
+      --background2: color-mix(in lab, var(--background) 20%, transparent);
       --background3: var(--background);
 
       content: '';

@@ -317,9 +317,9 @@
 
     background: linear-gradient(
       -135deg,
-      color-mix(in lab, var(--backgroundLight) 50%, transparent) 0%,
-      color-mix(in lab, var(--backgroundLight) 86%, transparent) 60%,
-      color-mix(in lab, var(--backgroundLight) 90%, transparent) 100%
+      color-mix(in lab, var(--backgroundLight) 10%, transparent) 40%,
+      color-mix(in lab, var(--backgroundLight) 70%, transparent) 80%,
+      color-mix(in lab, var(--backgroundLight) 90%, transparent) 90%
     );
   }
 

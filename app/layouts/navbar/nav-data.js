@@ -26,7 +26,7 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'Instagram',
-    url: `https://bsky.app/profile/${config.bluesky}`,
+    url: `https://www.instagram.com/${config.instagram}`,
     icon: 'instagram',
   },
   {
@@ -36,7 +36,7 @@ export const socialLinks = [
   },
   {
     label: 'Linkedin',
-    url: `https://www.figma.com/${config.figma}`,
+    url: `https://www.linkedin.com/in/${config.linkedin}`,
     icon: 'linkedin',
   },
   {

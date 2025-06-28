@@ -366,7 +366,7 @@
 
   &::after {
     content: '';
-    position: absolute;
+    /* position: absolute; */
     inset: 0;
 
     @supports (linear-gradient(in lab, red, red)) {
