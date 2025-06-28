@@ -19,8 +19,8 @@ import {
 import { media } from '~/utils/style';
 import { throttle } from '~/utils/throttle';
 import { cleanRenderer, cleanScene, removeLights } from '~/utils/three';
-import fragmentShader from './displacement-sphere-fragment.glsl?raw';
-import vertexShader from './displacement-sphere-vertex.glsl?raw';
+import fragmentShader from './displacement-sphere-fragment.glsl.js';
+import vertexShader from './displacement-sphere-vertex.glsl.js';
 import styles from './displacement-sphere.module.css';
 
 const springConfig = {
@@ -58,6 +58,7 @@ export const DisplacementSphere = props => {
       powerPreference: 'high-performance',
       failIfMajorPerformanceCaveat: true,
     });
+
     renderer.current.setSize(innerWidth, innerHeight);
     renderer.current.setPixelRatio(1);
     renderer.current.outputColorSpace = LinearSRGBColorSpace;
@@ -93,9 +94,17 @@ export const DisplacementSphere = props => {
     };
   }, []);
 
+  const sphereColor = 0xffffff;
+  // const sphereColor = '#FFF085';
   useEffect(() => {
-    const dirLight = new DirectionalLight(0xffffff, theme === 'light' ? 1.8 : 2.0);
-    const ambientLight = new AmbientLight(0xffffff, theme === 'light' ? 2.7 : 0.4);
+    const dirLight = new DirectionalLight(
+      sphereColor,
+      theme === 'light' ? 1.8 : 2.0
+    );
+    const ambientLight = new AmbientLight(
+      sphereColor,
+      theme === 'light' ? 2.7 : 0.4
+    );
 
     dirLight.position.z = 200;
     dirLight.position.x = 100;

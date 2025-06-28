@@ -1,39 +1,27 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+|\\    ||
+||\\   ||
+|| \\  ||
+||  \\ ||
+||   \\||
+||    \||
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+Neeleshwar Kumar
+Web Dev
 
-Hamish Williams
-Hand crafted design & web development
-
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+github.com/neeleshwark17
 
 _______________________________________________________________________________
 
 TECHNOLOGY | テクノロジー
 
 React
-Remix
+Next
+Solidity
 Three.js
-Framer Motion
 
 _______________________________________________________________________________
-
-FONTS | フォント
-
-Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8

@@ -10,13 +10,13 @@ import { Text } from '~/components/text';
 import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { useFormInput } from '~/hooks';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
-import { json } from '@remix-run/cloudflare';
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { json } from '@remix-run/server-runtime';
 import styles from './contact.module.css';
+import { sendEmail } from '~/utils/email';
 
 export const meta = () => {
   return baseMeta({
@@ -30,15 +30,8 @@ const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
-export async function action({ context, request }) {
-  const ses = new SESClient({
-    region: 'us-east-1',
-    credentials: {
-      accessKeyId: context.cloudflare.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: context.cloudflare.env.AWS_SECRET_ACCESS_KEY,
-    },
-  });
-
+export async function action({ request }) {
+  console.log('Sending Mail....');
   const formData = await request.formData();
   const isBot = String(formData.get('name'));
   const email = String(formData.get('email'));
@@ -69,28 +62,8 @@ export async function action({ context, request }) {
     return json({ errors });
   }
 
-  // Send email via Amazon SES
-  await ses.send(
-    new SendEmailCommand({
-      Destination: {
-        ToAddresses: [context.cloudflare.env.EMAIL],
-      },
-      Message: {
-        Body: {
-          Text: {
-            Data: `From: ${email}\n\n${message}`,
-          },
-        },
-        Subject: {
-          Data: `Portfolio message from ${email}`,
-        },
-      },
-      Source: `Portfolio <${context.cloudflare.env.FROM_EMAIL}>`,
-      ReplyToAddresses: [email],
-    })
-  );
-
-  return json({ success: true });
+  // Send email via EmailJS on the client side
+  return json({ success: true, email, message });
 }
 
 export const Contact = () => {
@@ -101,6 +74,16 @@ export const Contact = () => {
   const actionData = useActionData();
   const { state } = useNavigation();
   const sending = state === 'submitting';
+
+  // Handle email sending on the client side
+  useEffect(() => {
+    if (actionData?.success && actionData?.email && actionData?.message) {
+      sendEmail(actionData.email, actionData.message)
+        .catch(error => {
+          console.error('Failed to send email:', error);
+        });
+    }
+  }, [actionData]);
 
   return (
     <Section className={styles.contact}>
@@ -191,6 +174,9 @@ export const Contact = () => {
               loadingText="Sending..."
               icon="send"
               type="submit"
+              // onclick={() => {
+              //   window.location.href = 'mailto:neeleshwar99@gmail.com';
+              // }}
             >
               Send message
             </Button>
@@ -215,7 +201,7 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              I`ll get back to you within a couple days, sit tight
             </Text>
             <Button
               secondary

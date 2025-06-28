@@ -139,6 +139,13 @@
     opacity: 0.4;
   }
 
+  
+  &[data-minus='true']::before {
+    content: '-';
+    margin-right: 10px;
+    opacity: 0.4;
+  }
+
   &[data-status='entering'] {
     animation-name: introTextReveal;
 

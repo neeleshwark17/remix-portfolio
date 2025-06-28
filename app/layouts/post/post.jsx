@@ -95,7 +95,7 @@ export const Post = ({ children, title, date, banner, timecode }) => {
                   <path d="M1 1l20.5 12L42 1" strokeWidth="2" fill="none" />
                 </svg>
               </RouterLink>
-              <div className={styles.timecode}>{timecode}</div>
+              {/* <div className={styles.timecode}>{timecode}</div> */}
             </div>
           </div>
         </header>

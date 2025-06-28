@@ -35,7 +35,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       const index = (disciplineIndex + 1) % disciplines.length;
       setDisciplineIndex(index);
     },
-    5000,
+    4000,
     theme
   );
 
@@ -99,7 +99,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                           aria-hidden
                           ref={nodeRef}
                           className={styles.word}
-                          data-plus={true}
+                          data-minus={true}
                           data-status={status}
                           style={cssProps({ delay: tokens.base.durationL })}
                         >

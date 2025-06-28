@@ -12,6 +12,7 @@ import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
 import config from '~/config.json';
 import styles from './navbar.module.css';
+import SoundManager from '~/utils/soundManage';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -139,6 +140,57 @@ export const Navbar = () => {
     if (menuOpen) setMenuOpen(false);
   };
 
+  // Play sound on hover
+  // styles.navLink
+  // useEffect(() => {
+  //   const navLinksItem = document.querySelectorAll('.navLinksItem');
+  //   console.log('navLinksItem', navLinksItem);
+  // if(navLinksItem){
+
+  //   const clickSound = new Audio('/sounds/click.mp3');
+
+  //   navLinksItem.forEach(link => {
+
+  //     link.addEventListener('click', () => {
+  //       clickSound.currentTime = 0;
+  //       clickSound.play();
+  //     });
+  //   });
+
+  //   return () => {
+  //     navLinksItem.forEach(link => {
+  //       link.removeEventListener('mouseenter', () => {});
+  //       link.removeEventListener('click', () => {});
+  //     });
+  //   };
+  // }
+  // }, []);
+
+  useEffect(() => {
+    const navLinksItem = document.querySelectorAll('.navLinksItem');
+    console.log('navLinksItem', navLinksItem);
+
+    if (navLinksItem.length > 0) {
+      navLinksItem.forEach(link => {
+        link.addEventListener('click', () => {
+          SoundManager.playSound('/sounds/click.mp3');
+        });
+
+        // link.addEventListener('mouseenter', () => {
+        //   SoundManager.playSound('/sounds/hover.mp3');
+        // });
+      });
+
+      // Clean up listeners when component unmounts
+      return () => {
+        navLinksItem.forEach(link => {
+          link.removeEventListener('click', () => {});
+          // link.removeEventListener('mouseenter', () => {});
+        });
+      };
+    }
+  }, []);
+
   return (
     <header className={styles.navbar} ref={headerRef}>
       <RouterLink
@@ -162,7 +214,7 @@ export const Navbar = () => {
               to={pathname}
               key={label}
               data-navbar-item
-              className={styles.navLink}
+              className={styles.navLink + ' navLinksItem'}
               aria-current={getCurrent(pathname)}
               onClick={handleNavItemClick}
             >

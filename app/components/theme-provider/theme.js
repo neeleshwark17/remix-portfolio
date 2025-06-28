@@ -107,9 +107,13 @@ const tokensMobileSmall = {
 };
 
 // Tokens that change based on theme
+
+// Dark theme
 const dark = {
   background: 'oklch(17.76% 0 0)',
   backgroundLight: 'oklch(21.78% 0 0)',
+  primaryGreen: 'oklch(0.84 0.19 137.27)',
+  // primary: '#F7374F',
   primary: 'oklch(84.42% 0.19 202.24)',
   accent: 'oklch(84.42% 0.19 202.24)',
   error: 'oklch(65.91% 0.249 13.76)',
@@ -119,10 +123,28 @@ const dark = {
   textLight: 'color-mix(in lab, var(--text) 60%, transparent)',
 };
 
+// Light theme
 const light = {
   background: 'oklch(96.12% 0 0)',
   backgroundLight: 'var(--white)',
-  primary: 'var(--black)',
+  // primary: 'var(--black)',
+  primary: '#60B5FF',
+  accent: 'oklch(84.42% 0.19 202.24)',
+  error: 'oklch(63.17% 0.259 25.41)',
+  text: 'var(--black)',
+  textTitle: 'color-mix(in lab, var(--text) 90%, transparent)',
+  textBody: 'color-mix(in lab, var(--text) 75%, transparent)',
+  textLight: 'color-mix(in lab, var(--text) 55%, transparent)',
+};
+
+// Light Red
+const lightRed = {
+  background: 'oklch(96.12% 0 0)',
+  backgroundLight: 'var(--white)',
+  // primary: 'var(--black)',
+  // accent: '#00EA3F',
+  // primary: '#00EA3F',
+  primary: '#F7374F',
   accent: 'oklch(84.42% 0.19 202.24)',
   error: 'oklch(63.17% 0.259 25.41)',
   text: 'var(--black)',
@@ -140,4 +162,4 @@ export const tokens = {
   mobileS: tokensMobileSmall,
 };
 
-export const themes = { dark, light };
+export const themes = { dark, light, lightRed };

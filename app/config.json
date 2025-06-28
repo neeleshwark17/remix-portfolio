@@ -1,11 +1,12 @@
 {
-  "name": "Hamish Williams",
-  "role": "Designer",
-  "disciplines": ["Developer", "Prototyper", "Animator", "Illustrator", "Modder"],
-  "url": "https://hamishw.com",
-  "bluesky": "hamishw.com",
-  "figma": "@Hamish",
-  "github": "HamishMW",
-  "repo": "https://github.com/HamishMW/portfolio",
-  "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
+  "name": "Neeleshwar Kumar",
+  "role": "Developer",
+  "disciplines": ["Full Stack", "Web3", "ThreeJS"],
+  "url": "https://neeleshwar.netlify.app/",
+  "bluesky": "neeleshwar.bsky.social",
+  "stackOverflow": "11753476/neeleshwar-kumar",
+  "figma": "@neeleshwark17",
+  "github": "neeleshwark17",
+  "repo": "https://github.com/neeleshwark17",
+  "ascii": "|\\\\    ||\n||\\\\   ||\n|| \\\\  ||\n||  \\\\ ||\n||   \\\\||\n||    \\||"
 }

@@ -41,22 +41,23 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    title: 'Developer',
+    description: `Design portfolio of ${config.name} — a software engineer working on web & mobile apps.`,
   });
 };
 
-export const Home = () => {
+export default function Home() {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree,projectFour, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -103,13 +104,15 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="NFT MarketPlace specialized for 3D assets"
+        description="Discover. Own. Trade.
+Secured on Ethereum. Stored on IPFS with Pinata.
+Welcome to the future of NFTs."
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        buttonLink="/projects/binary-nft"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'NFT MarketPlace',
           textures: [
             {
               srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
@@ -118,43 +121,47 @@ export const Home = () => {
           ],
         }}
       />
+        
       <ProjectSummary
         id="project-2"
         alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Beef Bro - Friendly fitness challenges!"
+        description="Design and development in React Native,
+         A social fitness app where users create and join friendly fitness
+         challenges with friends, family, or the community. The focus is on
+         motivation, fun, and healthy competition"
+        buttonText="View"
+        buttonLink=""
         model={{
           type: 'phone',
-          alt: 'App login screen',
+          alt: 'App screen',
           textures: [
-            {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
-            },
             {
               srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
               placeholder: gamestackTexture2Placeholder,
+            },
+            {
+              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
+              placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}
       />
       <ProjectSummary
         id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+        title="MineCraft ThreeJS"
+        description="A minimalistic minecraft clone made in ThreeJS"
         buttonText="View project"
-        buttonLink="/projects/slice"
+        buttonLink="/projects/minecraft"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Minecraft',
           textures: [
             {
               srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
@@ -163,6 +170,32 @@ export const Home = () => {
           ],
         }}
       />
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={4}
+        title="Crashed - Online betting platform"
+        description="Betting platform built in nextJS and nodeJS along with socket support for handling multiple realtime users.
+        The platform is built for a client and is not publicly available, yet the smaple is available"
+        buttonText="View project"
+        buttonLink="/projects/binary-nft"
+        model={{
+          type: 'phone',
+          alt: 'Crashed',
+          textures: [
+            {
+              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              placeholder: sliceTexturePlaceholder,
+            },
+            {
+              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+    
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
@@ -171,4 +204,4 @@ export const Home = () => {
       <Footer />
     </div>
   );
-};
+}
