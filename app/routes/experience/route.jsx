@@ -14,7 +14,12 @@ const experiences = {
 };
 
 export async function loader({ request }) {
-  const slug = request.url.split('/').at(-1);
+  let url = request.url;
+  if (!url) {
+    const host = request.headers.get("host");
+    url = `https://${host}${request.originalUrl || request.path || "/"}`;
+  }
+  const slug = url.split('/').at(-1);
   const getModule = experiences[slug];
   if (!getModule) {
     throw new Response("Not Found", { status: 404 });
