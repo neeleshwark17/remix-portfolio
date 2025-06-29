@@ -16,7 +16,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@mdx-js/react": "^3.0.1",
-    "@remix-run/netlify": "^1.19.3",
+    "@netlify/remix-adapter": "^2.6.1",
     "@remix-run/node": "^2.7.1",
     "@remix-run/react": "^2.7.1",
     "framer-motion": "11.0.5",

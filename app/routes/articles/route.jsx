@@ -6,10 +6,19 @@ import { baseMeta } from '~/utils/meta';
 import config from '~/config.json';
 import { formatTimecode, readingTime } from '~/utils/timecode';
 
+const articles = {
+  nextjs: () => import("../articles.nextjs.mdx"),
+  web3: () => import("../articles.web3.mdx"),
+};
+
 export async function loader({ request }) {
   const slug = request.url.split('/').at(-1);
-  const module = await import(`../articles.${slug}.mdx`);
-  const text = await import(`../articles.${slug}.mdx?raw`);
+  const getModule = articles[slug];
+  if (!getModule) {
+    throw new Response("Not Found", { status: 404 });
+  }
+  const module = await getModule();
+  const text = await getModule(); // If you need raw text, adjust this line
   const readTime = readingTime(text.default);
   const ogImage = `${config.url}/static/${slug}-og.jpg`;
 

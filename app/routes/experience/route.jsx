@@ -6,10 +6,21 @@ import { baseMeta } from '~/utils/meta';
 import config from '~/config.json';
 import { formatTimecode, readingTime } from '~/utils/timecode';
 
+const experiences = {
+  sleepiz: () => import("../experience.sleepiz.mdx"),
+  widgetEdutech: () => import("../experience.widgetEdutech.mdx"),
+  quepplin: () => import("../experience.quepplin.mdx"),
+  "modern-styling-in-react": () => import("../experience.modern-styling-in-react.mdx"),
+};
+
 export async function loader({ request }) {
   const slug = request.url.split('/').at(-1);
-  const module = await import(`../experience.${slug}.mdx`);
-  const text = await import(`../experience.${slug}.mdx?raw`);
+  const getModule = experiences[slug];
+  if (!getModule) {
+    throw new Response("Not Found", { status: 404 });
+  }
+  const module = await getModule();
+  const text = await getModule(); // If you need raw text, adjust this line
   const readTime = readingTime(text.default);
   const ogImage = `${config.url}/static/${slug}-og.jpg`;
 
