@@ -61,13 +61,13 @@ export const Slice = () => {
           placeholder={sliceBackgroundPlaceholder}
           opacity={0.8}
         />
-        <ProjectHeader
+        {/* <ProjectHeader
           title={title}
           description={description}
           url="https://www.best.edu.au/s/q2yjjvl7?data=8%404!9%4020303!10%40-15087&version=1"
           roles={roles}
-        />
-        <ProjectSection padding="top">
+        /> */}
+        {/* <ProjectSection padding="top">
           <ProjectSectionContent>
             <ProjectImage
               srcSet={`${sliceApp} 800w, ${sliceAppLarge} 1920w`}
@@ -79,43 +79,7 @@ export const Slice = () => {
             />
           </ProjectSectionContent>
         </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionColumns centered className={styles.columns}>
-            <div className={styles.imagesText}>
-              <ProjectSectionHeading>Bringing it together</ProjectSectionHeading>
-              <ProjectSectionText>
-                Teachers needed a better way to create collaborative group activities by
-                annotating slides on Slice. Before starting this project, a layer could
-                only be annotated by a single user, making it difficult for learners to
-                work together.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                Our solution was to allow users to be invited to a layer, where they can
-                see others’ annotations and make their own.
-              </ProjectSectionText>
-            </div>
-            <div className={styles.sidebarImages}>
-              <Image
-                className={styles.sidebarImage}
-                srcSet={`${sliceSidebarLayers} 350w, ${sliceSidebarLayersLarge} 700w`}
-                width={350}
-                height={750}
-                placeholder={sliceSidebarLayersPlaceholder}
-                alt="The layers sidebar design, now with user profiles."
-                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
-              />
-              <Image
-                className={styles.sidebarImage}
-                srcSet={`${sliceSidebarAnnotations} 350w, ${sliceSidebarAnnotationsLarge} 700w`}
-                width={350}
-                height={750}
-                placeholder={sliceSidebarAnnotationsPlaceholder}
-                alt="Multiple user annotations on a shared layer."
-                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
-              />
-            </div>
-          </ProjectSectionColumns>
-        </ProjectSection>
+       
         <ProjectSection light>
           <ProjectSectionContent>
             <ProjectTextRow>
@@ -196,7 +160,7 @@ export const Slice = () => {
               alt="Students at the University of New South Wales using the new collaborative annotation features"
             />
           </ProjectSectionContent>
-        </ProjectSection>
+        </ProjectSection> */}
       </ProjectContainer>
       <Footer />
     </Fragment>

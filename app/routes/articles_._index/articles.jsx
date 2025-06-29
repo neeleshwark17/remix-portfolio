@@ -20,7 +20,6 @@ function ArticlesPost({ slug, frontmatter, timecode, index }) {
   const reduceMotion = useReducedMotion();
   const { title, abstract, date, featured, banner } = frontmatter;
 
-  console.log('frontmatter : ', banner);
   useEffect(() => {
     setDateTime(formatDate(date));
   }, [date, dateTime]);

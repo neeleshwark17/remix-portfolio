@@ -108,7 +108,7 @@ export const DisplacementSphere = props => {
 
     dirLight.position.z = 200;
     dirLight.position.x = 100;
-    dirLight.position.y = 100;
+    dirLight.position.y = 50;
 
     lights.current = [dirLight, ambientLight];
     lights.current.forEach(light => scene.current.add(light));
@@ -121,7 +121,7 @@ export const DisplacementSphere = props => {
   useEffect(() => {
     const { width, height } = windowSize;
 
-    const adjustedHeight = height + height * 0.3;
+    const adjustedHeight = height + height * 0.2;
     renderer.current.setSize(width, adjustedHeight);
     camera.current.aspect = width / adjustedHeight;
     camera.current.updateProjectionMatrix();

@@ -45,10 +45,10 @@ void main() {
   vec3 baseColor = vec3(0.7137, 0.9608, 0.0);
 
   // Highlight center with time-based pulse
-  float pulse = 0.2 + 0.5 * sin(time + vUv.x * 10.0 + vUv.y * 10.0);
+  float pulse = 0.2 + 0.4 * sin(time + vUv.x * 10.0 + vUv.y * 10.0);
 
   // Blend green with white for softness and light
-  vec3 finalColor = mix(baseColor, vec3(1.0), pulse * 0.3 + noise * 0.2);
+  vec3 finalColor = mix(baseColor, vec3(1.0), pulse * 0.8 + noise * 0.7);
 
   vec4 diffuseColor = vec4(finalColor, 1.0);
   vec3 totalEmissiveRadiance = finalColor * 0.3;

@@ -32,6 +32,7 @@
 
     @media (--mediaMobile) {
       padding-bottom: var(--spaceS);
+      margin-left: 2em;
     }
   }
 
