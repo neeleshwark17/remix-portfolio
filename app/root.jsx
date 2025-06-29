@@ -47,7 +47,12 @@ export const links = () => [
 ];
 
 export const loader = async ({ request }) => {
-  const { url } = request;
+  let url = request.url;
+  if (!url) {
+    // Fallback for environments where request.url is undefined
+    const host = request.headers.get("host");
+    url = `https://${host}${request.originalUrl || request.path || "/"}`;
+  }
   const { pathname } = new URL(url);
   const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : url;
   const canonicalUrl = `${config.url}${pathnameSliced}`;
