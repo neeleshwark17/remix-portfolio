@@ -1,4 +1,4 @@
-import { json, createCookieSessionStorage } from '@remix-run/netlify';
+import { createCookieSessionStorage, json } from '@remix-run/node';
 
 export async function action({ request }) {
   const formData = await request.formData();
