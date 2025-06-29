@@ -1,7 +1,6 @@
 import { baseMeta } from '~/utils/meta';
 import { getPosts } from './posts.server';
-import pkg from '@remix-run/netlify';
-const { json } = pkg;
+import { json } from '@remix-run/node';
 
 export async function loader() {
   const allPosts = await getPosts();
