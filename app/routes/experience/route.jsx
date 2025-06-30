@@ -17,7 +17,11 @@ export async function loader({ request }) {
   let url = request.url;
   if (!url) {
     const host = request.headers.get("host");
-    url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    if (!host) {
+      url = "https://example.com/"; // fallback to a safe default
+    } else {
+      url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    }
   }
   const slug = url.split('/').at(-1);
   const getModule = experiences[slug];
@@ -25,8 +29,8 @@ export async function loader({ request }) {
     throw new Response("Not Found", { status: 404 });
   }
   const module = await getModule();
-  const text = await getModule(); // If you need raw text, adjust this line
-  const readTime = readingTime(text.default);
+  // Placeholder for reading time since raw markdown is not available
+  const readTime = "a few minutes";
   const ogImage = `${config.url}/static/${slug}-og.jpg`;
 
   return json({
