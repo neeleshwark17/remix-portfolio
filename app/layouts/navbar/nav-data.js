@@ -24,11 +24,11 @@ export const navLinks = [
 ];
 
 export const socialLinks = [
-  {
-    label: 'Instagram',
-    url: `https://www.instagram.com/${config.instagram}`,
-    icon: 'instagram',
-  },
+  // {
+  //   label: 'Instagram',
+  //   url: `https://www.instagram.com/${config.instagram}`,
+  //   icon: 'instagram',
+  // },
   {
     label: 'Stack Overflow',
     url: `https://stackoverflow.com/users/${config.stackOverflow}`,
