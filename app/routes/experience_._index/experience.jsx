@@ -181,7 +181,7 @@ function SkeletonPost({ index }) {
 
 export function Experience() {
   const { posts, featured } = useLoaderData();
-  console.log('Loader Data ', posts);
+  // console.log('Loader Data ', posts);
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
   const isSingleColumn = width <= singleColumnWidth;

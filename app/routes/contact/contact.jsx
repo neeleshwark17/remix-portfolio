@@ -90,7 +90,6 @@ export const Contact = () => {
       <Transition unmount in={!actionData?.success} timeout={1600}>
         {({ status, nodeRef }) => (
           <Form
-            unstable_viewTransition
             className={styles.form}
             method="post"
             ref={nodeRef}
@@ -201,7 +200,7 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I`ll get back to you within a couple days, sit tight
+              I'll get back to you within a couple days, sit tight
             </Text>
             <Button
               secondary

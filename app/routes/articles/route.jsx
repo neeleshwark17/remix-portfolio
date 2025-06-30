@@ -4,7 +4,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { Post, postMarkdown } from '~/layouts/post';
 import { baseMeta } from '~/utils/meta';
 import config from '~/config.json';
-import { formatTimecode, readingTime } from '~/utils/timecode';
+import { formatTimecode } from '~/utils/timecode';
 
 const articles = {
   nextjs: () => import("../articles.nextjs.mdx"),
@@ -23,8 +23,8 @@ export async function loader({ request }) {
     throw new Response("Not Found", { status: 404 });
   }
   const module = await getModule();
-  const text = await getModule(); // If you need raw text, adjust this line
-  const readTime = readingTime(text.default);
+  // Placeholder for reading time since raw markdown is not available
+  const readTime = "a few minutes";
   const ogImage = `${config.url}/static/${slug}-og.jpg`;
 
   return json({
