@@ -15,7 +15,11 @@ export async function loader({ request }) {
   let url = request.url;
   if (!url) {
     const host = request.headers.get("host");
-    url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    if (!host) {
+      url = "https://example.com/"; // fallback to a safe default
+    } else {
+      url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    }
   }
   const slug = url.split('/').at(-1);
   const getModule = articles[slug];

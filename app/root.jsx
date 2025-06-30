@@ -51,7 +51,11 @@ export const loader = async ({ request }) => {
   if (!url) {
     // Fallback for environments where request.url is undefined
     const host = request.headers.get("host");
-    url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    if (!host) {
+      url = "https://example.com/"; // fallback to a safe default
+    } else {
+      url = `https://${host}${request.originalUrl || request.path || "/"}`;
+    }
   }
   const { pathname } = new URL(url);
   const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : url;
