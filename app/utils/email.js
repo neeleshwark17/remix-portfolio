@@ -12,7 +12,7 @@ function generateEmailTemplate({ sender, email, message }) {
         
         <!-- Header with Logo -->
         <div style="background-color: #1a1a1a; padding: 20px; text-align: center;">
-          <img src="https://yourdomain.com/favicon.svg" alt="Portfolio Logo" style="height: 32px; margin-bottom: 8px;" />
+          <img src="https://jaddiengineer.xyz/favicon.ico" alt="Portfolio Logo" style="height: 32px; margin-bottom: 8px;" />
         </div>
     
         <!-- Content -->
