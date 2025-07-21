@@ -78,9 +78,6 @@ function ArticlesPost({ slug, frontmatter, timecode, index }) {
             <Button secondary iconHoverShift icon="chevron-right" as="div">
               Read article
             </Button>
-            {/* <Text className={styles.timecode} size="s">
-              {timecode}
-            </Text> */}
           </div>
         </div>
       </RouterLink>

@@ -1,6 +1,6 @@
 @layer layout {
   .navbar {
-    --headerNavFontSize: calc((16 / 16) * 1rem);
+    --headerNavFontSize: calc((16 / 16) * .7rem);
 
     display: flex;
     flex-direction: column;

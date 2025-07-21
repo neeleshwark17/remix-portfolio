@@ -45,18 +45,18 @@ const Carousel = lazy(() =>
   import('~/components/carousel').then(module => ({ default: module.Carousel }))
 );
 
-const Armor = lazy(() => import('./armor').then(module => ({ default: module.Armor })));
+// const Armor = lazy(() => import('./armor').then(module => ({ default: module.Armor })));
 
-const title = 'Volkihar Knight';
+const title = 'Projects List';
 const description =
-  'A lore-friendly armor mod for The Elder Scrolls V: Skyrim. Released on PC and Xbox One with over one million downloads across both platforms.';
+  'Side projects list';
 const roles = ['3D Modelling', 'Texturing', 'Graphic Design'];
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
 };
 
-export function VolkiharKnight() {
+export function ProjectsList() {
   return (
     <Fragment>
       <style
@@ -116,7 +116,7 @@ export function VolkiharKnight() {
           <ProjectSectionColumns>
             <div className={styles.armor}>
               <Suspense>
-                <Armor alt="3D model of the Volkihar Knight armor" />
+                {/* <Armor alt="3D model of the Volkihar Knight armor" /> */}
               </Suspense>
             </div>
             <div className={styles.textSection}>

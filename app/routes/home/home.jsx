@@ -15,6 +15,7 @@ import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
+import { ProjectsList } from './projects-list';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
@@ -54,10 +55,11 @@ export default function Home() {
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
+  const projectFive = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree,projectFour, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -121,7 +123,7 @@ Welcome to the future of NFTs."
           ],
         }}
       />
-        
+
       <ProjectSummary
         id="project-2"
         alternate
@@ -152,8 +154,8 @@ Welcome to the future of NFTs."
       />
       <ProjectSummary
         id="project-3"
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
         index={3}
         title="MineCraft ThreeJS"
         description="A minimalistic minecraft clone made in ThreeJS"
@@ -172,8 +174,9 @@ Welcome to the future of NFTs."
       />
       <ProjectSummary
         id="project-4"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
+        sectionRef={projectFour}
+        alternate
+        visible={visibleSections.includes(projectFour.current)}
         index={4}
         title="Crashed - Online betting platform"
         description="Betting platform built in nextJS and nodeJS along with socket support for handling multiple realtime users.
@@ -195,7 +198,34 @@ Welcome to the future of NFTs."
           ],
         }}
       />
-    
+
+
+      <ProjectsList
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Explore more projets"
+        description="Other side projects i have been working on, personal, freelance etc."
+        buttonText="Explore"
+        buttonLink="/projects/projects-list"
+        model={{
+          type: 'laptop',
+          alt: 'Explore',
+          textures: [
+            {
+              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              placeholder: sliceTexturePlaceholder,
+            },
+            {
+              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+
+
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
