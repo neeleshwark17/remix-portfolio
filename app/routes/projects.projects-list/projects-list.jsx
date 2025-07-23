@@ -36,10 +36,13 @@ import {
   ProjectTextRow,
 } from '~/layouts/project';
 import { Fragment, Suspense, lazy } from 'react';
-import { media } from '~/utils/style';
+import { classes, cssProps, media } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import { VolkiharLogo } from './volkihar-logo';
 import styles from './volkihar-knight.module.css';
+import { Heading } from '~/components/heading';
+import { Text } from '~/components/text';
+import { Divider } from '~/components/divider';
 
 const Carousel = lazy(() =>
   import('~/components/carousel').then(module => ({ default: module.Carousel }))
@@ -50,7 +53,7 @@ const Carousel = lazy(() =>
 const title = 'Projects List';
 const description =
   'Side projects list';
-const roles = ['3D Modelling', 'Texturing', 'Graphic Design'];
+const roles = ['Front End', 'Bakend', 'Web3'];
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
@@ -84,11 +87,11 @@ export function ProjectsList() {
         <ProjectHeader
           title={title}
           description={description}
-          linkLabel="Get the mod"
+          linkLabel="Github"
           url="https://www.nexusmods.com/skyrimspecialedition/mods/4806/"
           roles={roles}
         />
-        <ProjectSection>
+        {/* <ProjectSection>
           <ProjectSectionContent>
             <ProjectImage
               srcSet={`${volkiharBanner} 800w, ${volkiharBannerLarge} 1100w`}
@@ -99,8 +102,8 @@ export function ProjectsList() {
               sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
+        </ProjectSection> */}
+        {/* <ProjectSection>
           <ProjectSectionContent>
             <Image
               srcSet={`${volkiharBook} 490w, ${volkiharBookLarge} 960w`}
@@ -111,121 +114,51 @@ export function ProjectsList() {
               sizes={`(max-width: ${media.mobile}px) 90vw, (max-width: ${media.tablet}px) 80vw, 70vw`}
             />
           </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionColumns>
-            <div className={styles.armor}>
-              <Suspense>
-                {/* <Armor alt="3D model of the Volkihar Knight armor" /> */}
-              </Suspense>
-            </div>
-            <div className={styles.textSection}>
-              <ProjectSectionHeading>Armor design</ProjectSectionHeading>
-              <ProjectSectionText>
-                As a player I noticed there weren’t any heavy armor options for the
-                Volkihar faction. This kinda sucks when you’ve specialised in heavy armor
-                and decide to join the faction and discover they all wear light armor.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                My solution was to create a mod that combines meshes from the Volkihar
-                faction armor with heavy plate armor. The mod builds upon textures and
-                meshes from the base game, so it unifies with Skyrim’s overall aesthetic.
-                I combined and modified the meshes in 3DS Max. To establish a cohesive
-                design across the set, I edited existing textures, and designed custom
-                textures in Photoshop.
-              </ProjectSectionText>
-            </div>
-          </ProjectSectionColumns>
-        </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionContent>
-            <div className={styles.logoContainer}>
-              <VolkiharLogo
-                role="img"
-                aria-label="The Volkihar Knight logo, a monogram using the letters 'V' and 'K"
-              />
-            </div>
-            <ProjectTextRow center noMargin>
-              <ProjectSectionHeading>Identity design</ProjectSectionHeading>
-              <ProjectSectionText>
-                The monogram uses custom designed typography to get the right balance of
-                weight and angularity. I combined this with Trajan for the text, which is
-                also used for Skyrim’s game title wordmark.
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionContent>
-            <Suspense>
-              <Carousel
-                placeholder={volkiharSlidePlaceholder}
-                images={[
-                  {
-                    srcSet: `${volkiharSlide1} 960w, ${volkiharSlide1Large} 1920w`,
-                    sizes: `(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 1096px`,
-                    alt: 'A female character wearing the black coloured armor set.',
-                  },
-                  {
-                    srcSet: `${volkiharSlide2} 960w, ${volkiharSlide2Large} 1920w`,
-                    sizes: `(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 1096px`,
-                    alt: 'A close up of the custom gauntlets design.',
-                  },
-                  {
-                    srcSet: `${volkiharSlide3} 960w, ${volkiharSlide3Large} 1920w`,
-                    sizes: `(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 1096px`,
-                    alt: 'A female character wielding a sword and wearing the red coloured armor.',
-                  },
-                ]}
-                width={1920}
-                height={1080}
-              />
-            </Suspense>
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection
-          backgroundElement={
-            <Image
-              srcSet={`${volkiharEnderal} 1280w, ${volkiharEnderalLarge} 1920w`}
-              width={1280}
-              height={720}
-              placeholder={volkiharEnderalPlaceholder}
-              alt="A promotional image from Enderal showing several characters in the game overlooking a distant city."
-              sizes={`100vw`}
-            />
-          }
-        >
-          <ProjectSectionContent>
-            <ProjectTextRow center centerMobile noMargin>
-              <Image
-                srcSet={`${volkiharEnderalLogo} 180w, ${volkiharEnderalLogoLarge} 360w`}
-                width={180}
-                height={200}
-                placeholder={volkiharEnderalLogoPlaceholder}
-                alt="The Enderal game logo"
-                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 220px`}
-                style={{ maxWidth: 220, width: '100%', marginBottom: 30 }}
-              />
-              <ProjectSectionHeading>Featured in Enderal</ProjectSectionHeading>
-              <ProjectSectionText>
-                I was super stoked to have my work featured in the major standalone mod
-                Enderal, which won best fan creation at the game awards in 2016. Within
-                the game my armor design can be found being used for the Wandering Mage
-                armor set.
-              </ProjectSectionText>
-              <Button
-                secondary
-                iconHoverShift
-                icon="chevron-right"
-                href="https://store.steampowered.com/app/933480/Enderal_Forgotten_Stories/"
-              >
-                View on Steam
-              </Button>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
+        </ProjectSection> */}
+        
       </ProjectContainer>
       <Footer />
     </Fragment>
+  );
+}
+
+
+function SkeletonPost({ index }) {
+  return (
+    <article
+      aria-hidden="true"
+      className={classes(styles.post, styles.skeleton)}
+      data-featured="false"
+      style={index !== undefined ? cssProps({ delay: index * 100 + 200 }) : undefined}
+    >
+      <div className={styles.postLink}>
+        <div className={styles.postDetails}>
+          <div aria-hidden className={styles.postDate}>
+            <Divider notchWidth="64px" notchHeight="8px" />
+            Coming soon...
+          </div>
+          <Heading
+            className={styles.skeletonBone}
+            as="h2"
+            level={4}
+            style={{ height: 24, width: '70%' }}
+          />
+          <Text
+            className={styles.skeletonBone}
+            size="s"
+            as="p"
+            style={{ height: 90, width: '100%' }}
+          />
+          <div className={styles.postFooter}>
+            <Button secondary iconHoverShift icon="chevron-right" as="div">
+              Read more
+            </Button>
+            <Text className={styles.timecode} size="s">
+              00:00:00:00
+            </Text>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }
