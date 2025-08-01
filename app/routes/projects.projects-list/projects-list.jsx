@@ -1,67 +1,161 @@
-import volkiharBackgroundLarge from '~/assets/volkihar-background-large.jpg';
-import volkiharBackgroundPlaceholder from '~/assets/volkihar-background-placeholder.jpg';
-import volkiharBackground from '~/assets/volkihar-background.jpg';
-import volkiharBannerLarge from '~/assets/volkihar-banner-large.jpg';
-import volkiharBannerPlaceholder from '~/assets/volkihar-banner-placeholder.jpg';
-import volkiharBanner from '~/assets/volkihar-banner.jpg';
-import volkiharBookLarge from '~/assets/volkihar-book-large.png';
-import volkiharBookPlaceholder from '~/assets/volkihar-book-placeholder.png';
-import volkiharBook from '~/assets/volkihar-book.png';
-import volkiharEnderalLarge from '~/assets/volkihar-enderal-large.jpg';
-import volkiharEnderalLogoLarge from '~/assets/volkihar-enderal-logo-large.png';
-import volkiharEnderalLogoPlaceholder from '~/assets/volkihar-enderal-logo-placeholder.png';
-import volkiharEnderalLogo from '~/assets/volkihar-enderal-logo.png';
-import volkiharEnderalPlaceholder from '~/assets/volkihar-enderal-placeholder.jpg';
-import volkiharEnderal from '~/assets/volkihar-enderal.jpg';
-import volkiharSlide1Large from '~/assets/volkihar-slide-1-large.jpg';
-import volkiharSlide1 from '~/assets/volkihar-slide-1.jpg';
-import volkiharSlide2Large from '~/assets/volkihar-slide-2-large.jpg';
-import volkiharSlide2 from '~/assets/volkihar-slide-2.jpg';
-import volkiharSlide3Large from '~/assets/volkihar-slide-3-large.jpg';
-import volkiharSlide3 from '~/assets/volkihar-slide-3.jpg';
-import volkiharSlidePlaceholder from '~/assets/volkihar-slide-placeholder.jpg';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
+import rick from '~/assets/rick.jpeg';
 import { Image } from '~/components/image';
-import {
-  ProjectBackground,
-  ProjectContainer,
-  ProjectHeader,
-  ProjectImage,
-  ProjectSection,
-  ProjectSectionColumns,
-  ProjectSectionContent,
-  ProjectSectionHeading,
-  ProjectSectionText,
-  ProjectTextRow,
-} from '~/layouts/project';
-import { Fragment, Suspense, lazy } from 'react';
+import { Fragment, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { classes, cssProps, media } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
-import { VolkiharLogo } from './volkihar-logo';
 import styles from './volkihar-knight.module.css';
 import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { Divider } from '~/components/divider';
+import { ProjectBackground, ProjectContainer, ProjectHeader } from '~/layouts/project';
+import { useWindowSize } from '~/hooks';
+import { DecoderText } from '~/components/decoder-text';
+import { useReducedMotion } from 'framer-motion';
 
-const Carousel = lazy(() =>
-  import('~/components/carousel').then(module => ({ default: module.Carousel }))
-);
-
-// const Armor = lazy(() => import('./armor').then(module => ({ default: module.Armor })));
-
-const title = 'Projects List';
+const title = 'Side Projects List';
 const description =
-  'Side projects list';
+  '';
 const roles = ['Front End', 'Bakend', 'Web3'];
+
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
 };
 
+function ArticlesPost({ frontmatter, index }) {
+  const { title, abstract, featured, banner } = frontmatter;
+  const reduceMotion = useReducedMotion();
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
+  return <article
+    className={styles.post}
+    data-featured={!!featured}
+    style={index !== undefined ? cssProps({ delay: index * 100 + 200 }) : undefined}
+  >
+    {featured && (
+      <Text className={styles.postLabel} size="s">
+        devto
+      </Text>
+    )}
+    {featured && !!banner && (
+      <div className={styles.postImage}>
+        <Image
+          noPauseButton
+          play={!reduceMotion ? hovered : undefined}
+          src={banner}
+          placeholder={`${banner.split('.')[0]}-placeholder.jpg`}
+          alt=""
+          role="presentation"
+        />
+      </div>
+    )}
+    <div
+      className={styles.postLink}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={styles.postDetails}>
+        <div aria-hidden className={styles.postDate}>
+          <Divider notchWidth="64px" notchHeight="8px" />
+        </div>
+        <Heading as="h2" level={featured ? 2 : 4}>
+          {title}
+        </Heading>
+        <Text size={featured ? 'l' : 's'} as="p">
+          {abstract}
+        </Text>
+      </div>
+    </div>
+    {featured && (
+      <Text aria-hidden className={styles.postTag} size="s">
+        000
+      </Text>
+    )}
+  </article>;
+}
+
 export function ProjectsList() {
+  const posts = [
+    {
+      "slug": "web3",
+      "timecode": "00:00:58:66",
+      "frontmatter": {
+        "title": "Web3, NFTs & Solidity in 2025: Trends, Tools & What’s Next",
+        "abstract": "A look into how the Web3 space is evolving in 2025—covering AI-powered NFTs, Solidity’s ongoing dominance, real-world tokenization, and emerging tools reshaping decentralized tech.",
+        "date": "2025-05-08",
+        "banner": "/static/hello-world-banner.jpg"
+      }
+    }
+  ];
+
+  const { width } = useWindowSize();
+  const singleColumnWidth = 1190;
+  const isSingleColumn = width <= singleColumnWidth;
+
+  const postsHeader = (
+    <header className={styles.header}>
+      <Heading className={styles.heading} level={5} as="h1">
+        <DecoderText text="Unfinished personal projects" />
+      </Heading>
+    </header>
+  );
+
+  const postList = (
+    <div className={styles.list}>
+      {!isSingleColumn && postsHeader}
+      {posts.map(({ slug, ...post }, index) => (
+        <ArticlesPost key={slug} slug={slug} index={index} {...post} />
+      ))}
+      {Array(2)
+        .fill()
+        .map((skeleton, index) => (
+          <SkeletonPost key={index} index={index} />
+        ))}
+    </div>
+  );
+
+  let dataFrontMatter = {
+    "slug": "nextjs",
+    "timecode": "00:00:38:93",
+    "frontmatter": {
+      "title": "Next.js 15 in 2025- Why It’s Still the Framework to Beat",
+      "abstract": "A forward look at how Next.js 15 .",
+      "date": "2025-05-22",
+      "banner": "/static/modern-styling-in-react-banner.jpg",
+      "featured": true
+    }
+  };
+
+  const projectsLog = <ArticlesPost
+    // posts={[
+    //   {
+    //     "slug": "web3",
+    //     "timecode": "00:00:58:66",
+    //     "frontmatter": {
+    //       "title": "Web3, NFTs & Solidity in 2025: Trends, Tools & What’s Next",
+    //       "abstract": "A look into how the Web3 space is evolving in 2025—covering AI-powered NFTs.",
+    //       "date": "2025-05-08",
+    //       "banner": "/static/hello-world-banner.jpg"
+    //     }
+    //   }
+    // ]}
+    {...dataFrontMatter}
+  />;
+
+
   return (
-    <Fragment>
+    <Fragment
+    >
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -76,47 +170,28 @@ export function ProjectsList() {
           `,
         }}
       />
+
       <ProjectContainer>
         <ProjectBackground
-          srcSet={`${volkiharBackground} 1280w, ${volkiharBackgroundLarge} 1920w`}
+          srcSet={`${rick} 1280w, ${rick} 1920w`}
           width={1280}
           height={720}
-          placeholder={volkiharBackgroundPlaceholder}
+          placeholder={rick}
           opacity={0.5}
         />
         <ProjectHeader
           title={title}
           description={description}
           linkLabel="Github"
-          url="https://www.nexusmods.com/skyrimspecialedition/mods/4806/"
+          url="https://github.com/neeleshwark17?tab=repositories"
           roles={roles}
         />
-        {/* <ProjectSection>
-          <ProjectSectionContent>
-            <ProjectImage
-              srcSet={`${volkiharBanner} 800w, ${volkiharBannerLarge} 1100w`}
-              width={800}
-              height={436}
-              placeholder={volkiharBannerPlaceholder}
-              alt="A dark elf wearing the Volkihar Knight armor with the logo overlaid on the image."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-          </ProjectSectionContent>
-        </ProjectSection> */}
-        {/* <ProjectSection>
-          <ProjectSectionContent>
-            <Image
-              srcSet={`${volkiharBook} 490w, ${volkiharBookLarge} 960w`}
-              width={480}
-              height={300}
-              placeholder={volkiharBookPlaceholder}
-              alt="A book containing a sketch depicting the logo and armor"
-              sizes={`(max-width: ${media.mobile}px) 90vw, (max-width: ${media.tablet}px) 80vw, 70vw`}
-            />
-          </ProjectSectionContent>
-        </ProjectSection> */}
-        
+
+        {postList}
+        {projectsLog}
       </ProjectContainer>
+
+
       <Footer />
     </Fragment>
   );
@@ -162,3 +237,5 @@ function SkeletonPost({ index }) {
     </article>
   );
 }
+{/* 
+        <SkeletonPost/> */}
