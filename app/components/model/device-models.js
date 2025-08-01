@@ -1,5 +1,6 @@
 import iphone11 from '~/assets/iphone-11.glb';
 import macbookPro from '~/assets/macbook-pro.glb';
+import monitor from '~/assets/monitor.glb';
 
 export const ModelAnimationType = {
   SpringUp: 'spring-up',
@@ -21,4 +22,11 @@ export const deviceModels = {
     position: { x: 0, y: 0, z: 0 },
     animation: ModelAnimationType.LaptopOpen,
   },
+  monitor:{
+    url: monitor,
+    width: 1280,
+    height: 800,
+    position: { x: 0, y: 0, z: 0 },
+    animation: ModelAnimationType.SpringUp,
+  }
 };
