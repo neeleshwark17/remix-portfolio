@@ -131,12 +131,12 @@ Welcome to the future of NFTs."
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="Beef Bro - Friendly fitness challenges!"
+        buttonLink="/projects/beef-bro"
         description="Design and development in React Native,
          A social fitness app where users create and join friendly fitness
          challenges with friends, family, or the community. The focus is on
          motivation, fun, and healthy competition"
-        buttonText="View"
-        buttonLink=""
+        buttonText="View project"
         model={{
           type: 'phone',
           alt: 'App screen',

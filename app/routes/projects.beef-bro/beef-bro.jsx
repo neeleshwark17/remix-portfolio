@@ -27,28 +27,27 @@ import {
 import { baseMeta } from '~/utils/meta';
 import { Suspense, lazy, useMemo } from 'react';
 import { media } from '~/utils/style';
-import styles from './binary-nft.module.css';
+import styles from './beef-bro.module.css';
 
 const Earth = lazy(() => import('./earth').then(module => ({ default: module.Earth })));
 const EarthSection = lazy(() =>
   import('./earth').then(module => ({ default: module.EarthSection }))
 );
 
-const title = 'NFT MarketPlace specialized for 3D assets';
+const title = 'Beef Bro - Friendly fitness challenges!';
 const description =
-  'I created this marketplace from the past experience of creating a marketplace NFT`s in my previous company where i developed a marketplace platforms and related tools.. I am also a big fan of the web3 space and I believe that this is the future of internet.';
+  'A React Native app, featuring a social fitness platform where users create and join friendly fitness challenges with friends, family, or the community. The focus is on motivation, fun, and healthy competition';
 const roles = [
-  'Decentralized',
-  'BlockChain',
-  'Crypto',
-  'NFT',
+  'React Native',
+  'Supabase',
+  'TypeScript',
 ];
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
 };
 
-export const BinrayNft = () => {
+export const BeefBro = () => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
   const themes = ['dark', 'light'];
