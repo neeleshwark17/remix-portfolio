@@ -9,9 +9,9 @@
     padding: 0;
     width: var(--space2XL);
     position: fixed;
-    top: var(--spaceOuter);
+    top: 1em;
     left: var(--spaceOuter);
-    bottom: var(--spaceOuter);
+    bottom: 1em;
     z-index: var(--zIndex4);
     isolation: isolate;
 
