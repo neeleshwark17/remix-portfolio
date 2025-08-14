@@ -7,6 +7,8 @@ import gamestackTexture from '~/assets/gamestack-login.jpg';
 import sliceTextureLarge from '~/assets/slice-app-large.jpg';
 import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
 import sliceTexture from '~/assets/slice-app.jpg';
+import exploreMore from '~/assets/explore-more.png';
+import devColony from '~/assets/dev-col.png';
 import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
@@ -56,10 +58,11 @@ export default function Home() {
   const projectThree = useRef();
   const projectFour = useRef();
   const projectFive = useRef();
+  const projectSix = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, projectSix, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -157,21 +160,22 @@ Welcome to the future of NFTs."
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="MineCraft ThreeJS"
-        description="A minimalistic minecraft clone made in ThreeJS"
+        title="DevColony"
+        description="A mentorship platform for developers to learn and grow together"
         buttonText="View project"
-        buttonLink="/projects/minecraft"
+        buttonLink="/projects/dev-colony"
         model={{
           type: 'laptop',
-          alt: 'Minecraft',
+          alt: 'DevColony',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              srcSet: `${devColony} 800w, ${devColony} 1920w`,
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
+
       <ProjectSummary
         id="project-4"
         sectionRef={projectFour}
@@ -199,12 +203,32 @@ Welcome to the future of NFTs."
         }}
       />
 
-
-      <ProjectsList
+      <ProjectSummary
         id="project-5"
         sectionRef={projectFive}
         visible={visibleSections.includes(projectFive.current)}
         index={5}
+        title="MineCraft ThreeJS"
+        description="A minimalistic minecraft clone made in ThreeJS"
+        buttonText="View project"
+        buttonLink="/projects/minecraft"
+        model={{
+          type: 'laptop',
+          alt: 'Minecraft',
+          textures: [
+            {
+              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+
+      <ProjectsList
+        id="project-6"
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
         title="Explore more projets"
         description="Other side projects i have been working on, personal, freelance etc."
         buttonText="Explore"
@@ -214,11 +238,11 @@ Welcome to the future of NFTs."
           alt: 'Explore',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              srcSet: `${exploreMore} 800w, ${exploreMore} 1920w`,
               placeholder: sliceTexturePlaceholder,
             },
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              srcSet: `${exploreMore} 800w, ${exploreMore} 1920w`,
               placeholder: sliceTexturePlaceholder,
             },
           ],

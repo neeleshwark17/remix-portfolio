@@ -116,6 +116,26 @@
   width: 100%;
 }
 
+.row{
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding-block: 2em;
+
+  img {
+    cursor: pointer;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      filter: grayscale(0%) brightness(100%);
+      transform: translateY(-4px);
+    }
+  }
+}
+
 .svg {
   position: absolute;
   right: 0;

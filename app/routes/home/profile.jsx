@@ -1,6 +1,10 @@
 import profileImgLarge from '~/assets/profile-large.jpg';
 import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
 import profileImg from '~/assets/profile.jpg';
+import python from '~/assets/python.png';
+import javascript from '~/assets/javascrip.png';
+import nodejs from '~/assets/nodejs.png';
+import nextjs from '~/assets/next.png';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
@@ -61,7 +65,50 @@ export const Profile = ({ id, visible, sectionRef }) => {
               >
                 Send me a message
               </Button>
+              <div className={styles.row}>
+                <Image
+                  reveal
+                  delay={100}
+                  placeholder={python}
+                  srcSet={`${python} 2w, ${python} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em"
+                  }}
+                  alt="python" />
+                <Image
+                  reveal
+                  delay={100}
+                  placeholder={javascript}
+                  srcSet={`${javascript} 2w, ${javascript} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em"
+                  }}
+                  alt="javascript" />
+                <Image
+                  reveal
+                  delay={100}
+                  placeholder={nodejs}
+                  srcSet={`${nodejs} 2w, ${nodejs} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em"
+                  }}
+                  alt="nodejs" />
+                <Image
+                  reveal
+                  delay={100}
+                  placeholder={nextjs}
+                  srcSet={`${nextjs} 2w, ${nextjs} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em"
+                  }}
+                  alt="next" />
+              </div>
             </div>
+
             <div className={styles.column}>
               <div className={styles.tag} aria-hidden>
                 <Divider
