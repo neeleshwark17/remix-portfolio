@@ -109,6 +109,7 @@ export function ProjectsList({
     buttonText,
     buttonLink,
     alternate,
+    buttonShow = true,
     ...rest
 }) {
     const [focused, setFocused] = useState(false);
@@ -169,9 +170,9 @@ export function ProjectsList({
                     {description}
                 </Text>
                 <div className={styles.button} data-visible={visible}>
-                    <Button iconHoverShift href={buttonLink} iconEnd="arrow-right">
+                    {buttonShow && <Button iconHoverShift href={buttonLink} iconEnd="arrow-right">
                         {buttonText}
-                    </Button>
+                    </Button>}
                 </div>
             </div>
         );

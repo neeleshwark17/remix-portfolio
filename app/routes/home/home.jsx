@@ -229,10 +229,11 @@ Welcome to the future of NFTs."
         sectionRef={projectSix}
         visible={visibleSections.includes(projectSix.current)}
         index={6}
-        title="Explore more projets"
+        title="Working on more projets"
         description="Other side projects i have been working on, personal, freelance etc."
         buttonText="Explore"
         buttonLink="/projects/projects-list"
+        buttonShow={false}
         model={{
           type: 'laptop',
           alt: 'Explore',
