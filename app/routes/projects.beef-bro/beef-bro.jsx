@@ -1,17 +1,12 @@
-import backgroundSprLarge from '~/assets/spr-background-large.jpg';
-import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
-import backgroundSpr from '~/assets/spr-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
+import backgroundSprLarge from '~/assets/gamestack-background.png';
+import backgroundSprPlaceholder from '~/assets/gamestack-background.png';
+import backgroundSpr from '~/assets/gamestack-background.png';
 import imageSprLessonBuilderDarkPlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/spr-lesson-builder-dark.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/spr-lesson-builder-light-large.jpg';
 import imageSprLessonBuilderLightPlaceholder from '~/assets/spr-lesson-builder-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/spr-lesson-builder-light.jpg';
+import gamestackLight from '~/assets/gamestack-list.jpg';
+import gamestackLoginLight from '~/assets/gamestack-login-large.jpg';
 import { Footer } from '~/components/footer';
-import { Image } from '~/components/image';
-import { Link } from '~/components/link';
-import { SegmentedControl, SegmentedControlOption } from '~/components/segmented-control';
-import { ThemeProvider, useTheme } from '~/components/theme-provider';
+import { useTheme } from '~/components/theme-provider';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -19,20 +14,18 @@ import {
   ProjectImage,
   ProjectSection,
   ProjectSectionColumns,
-  ProjectSectionContent,
   ProjectSectionHeading,
   ProjectSectionText,
   ProjectTextRow,
 } from '~/layouts/project';
 import { baseMeta } from '~/utils/meta';
-import { Suspense, lazy, useMemo } from 'react';
 import { media } from '~/utils/style';
 import styles from './beef-bro.module.css';
 
-const Earth = lazy(() => import('./earth').then(module => ({ default: module.Earth })));
-const EarthSection = lazy(() =>
-  import('./earth').then(module => ({ default: module.EarthSection }))
-);
+// const Earth = lazy(() => import('./earth').then(module => ({ default: module.Earth })));
+// const EarthSection = lazy(() =>
+//   import('./earth').then(module => ({ default: module.EarthSection }))
+// );
 
 const title = 'Beef Bro - Friendly fitness challenges!';
 const description =
@@ -48,13 +41,12 @@ export const meta = () => {
 };
 
 export const BeefBro = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const themes = ['dark', 'light'];
 
-  const handleThemeChange = index => {
-    toggleTheme(themes[index]);
-  };
+  // const handleThemeChange = index => {
+  //   toggleTheme(themes[index]);
+  // };
 
   return (
     <>
@@ -68,21 +60,21 @@ export const BeefBro = () => {
         <ProjectHeader
           title={title}
           description={description}
-          url="https://binarynft.netlify.app/"
+          // url="https://binarynft.netlify.app/"
+          url=""
           roles={roles}
         />
         <ProjectSection padding="top">
-          <ProjectSectionContent>
+          <ProjectSectionColumns className={styles.imageStackRow}>
             <ProjectImage
+              className={styles.imagePrimary}
               raised
-              key={theme}
               srcSet={
                 isDark
-                  ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
-                  : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
+                  ? `${gamestackLoginLight} 1280w, ${gamestackLoginLight} 2560w`
+                  : `${gamestackLoginLight} 1280w, ${gamestackLoginLight} 2560w`
               }
-              width={1280}
-              height={800}
+              style={{ width: '100%', height: 'auto' }}
               placeholder={
                 isDark
                   ? imageSprLessonBuilderDarkPlaceholder
@@ -91,16 +83,31 @@ export const BeefBro = () => {
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
             />
-          </ProjectSectionContent>
+            <ProjectImage
+              className={styles.imageOverlay}
+              raised
+              srcSet={
+                isDark
+                  ? `${gamestackLight} 1280w, ${gamestackLight} 2560w`
+                  : `${gamestackLight} 1280w, ${gamestackLight} 2560w`
+              }
+              style={{ width: '100%', height: 'auto' }}
+              placeholder={
+                isDark
+                  ? imageSprLessonBuilderDarkPlaceholder
+                  : imageSprLessonBuilderLightPlaceholder
+              }
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+            />
+          </ProjectSectionColumns>
         </ProjectSection>
         <ProjectSection>
           <ProjectTextRow>
             <ProjectSectionHeading>The platform</ProjectSectionHeading>
             <ProjectSectionText>
-              Built on Ethereum with the ERC-721 standard, our NFT Marketplace ensures true digital ownership.
-              Assets are stored on IPFS and pinned via Pinata for decentralized permanence.
-              Users connect through Metamask or Coinbase Wallet for secure, seamless transactions.
-              Hardhat powers our smart contract development, delivering a reliable and scalable blockchain solution
+              Built this app in React Native with TypeScript and Supabase for the backend. Its an social fitness platform where users can create and join friendly 
+              fitness challenges with friends, family, or the community. The focus is on motivation, fun, and healthy competition.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSection>

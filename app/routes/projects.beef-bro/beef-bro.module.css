@@ -42,3 +42,49 @@
     top: -5%;
   }
 }
+
+/* Page-local image stacking styles for Beef Bro */
+.imageStackRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spaceXL);
+}
+
+.imagePrimary {
+  width: 55%;
+}
+
+.imageOverlay {
+  width: 45%;
+  position: relative;
+  top: -6%;
+  left: -8%;
+  z-index: 2;
+}
+
+@media (--mediaTablet) {
+  .imagePrimary {
+    width: 60%;
+  }
+  .imageOverlay {
+    width: 55%;
+    top: -5%;
+    left: -6%;
+  }
+}
+
+@media (--mediaMobile) {
+  .imageStackRow {
+    gap: var(--spaceL);
+  }
+  .imagePrimary {
+    width: 70%;
+  }
+  .imageOverlay {
+    width: 65%;
+    top: -4%;
+    left: -15%;
+  }
+}
