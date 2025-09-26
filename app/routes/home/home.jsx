@@ -185,8 +185,9 @@ Welcome to the future of NFTs."
         title="Crashed - Online betting platform"
         description="Betting platform built in nextJS and nodeJS along with socket support for handling multiple realtime users.
         The platform is built for a client and is not publicly available, yet the smaple is available"
+        buttonShow={false}
         buttonText="View project"
-        buttonLink="/projects/binary-nft"
+        // buttonLink="/projects/binary-nft"
         model={{
           type: 'phone',
           alt: 'Crashed',

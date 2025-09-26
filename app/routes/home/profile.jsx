@@ -2,6 +2,8 @@ import profileImgLarge from '~/assets/profile-large.jpg';
 import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
 import profileImg from '~/assets/profile.jpg';
 import python from '~/assets/python.png';
+import react from '~/assets/react.png';
+import remix from '~/assets/remix.png';
 import javascript from '~/assets/javascrip.png';
 import nodejs from '~/assets/nodejs.png';
 import nextjs from '~/assets/next.png';
@@ -69,13 +71,38 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 <Image
                   reveal
                   delay={100}
-                  placeholder={python}
-                  srcSet={`${python} 2w, ${python} 2w`}
+                  placeholder={react}
+                  srcSet={`${react} 2w, ${react} 2w`}
                   style={{
                     width: "3em",
                     height: "3em"
                   }}
-                  alt="python" />
+                  alt="react" />
+                <Image
+                  reveal
+                  delay={100}
+                  placeholder={nextjs}
+                  srcSet={`${nextjs} 2w, ${nextjs} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em"
+                  }}
+                  alt="nextjs" />
+                  <Image
+                  reveal
+                  delay={100}
+                  placeholder={remix}
+                  srcSet={`${remix} 2w, ${remix} 2w`}
+                  style={{
+                    width: "3em",
+                    height: "3em",
+                    scale: "1.2",
+                    alignItems: "center",
+                  }}
+                  alt="remix" />
+              </div>
+              <div className={styles.row}>
+
                 <Image
                   reveal
                   delay={100}
@@ -96,16 +123,17 @@ export const Profile = ({ id, visible, sectionRef }) => {
                     height: "3em"
                   }}
                   alt="nodejs" />
+
                 <Image
                   reveal
                   delay={100}
-                  placeholder={nextjs}
-                  srcSet={`${nextjs} 2w, ${nextjs} 2w`}
+                  placeholder={python}
+                  srcSet={`${python} 2w, ${python} 2w`}
                   style={{
                     width: "3em",
                     height: "3em"
                   }}
-                  alt="next" />
+                  alt="python" />
               </div>
             </div>
 

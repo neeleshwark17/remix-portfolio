@@ -119,19 +119,20 @@
 .row{
   display: flex;
   justify-content: space-between;
-  gap: 1em;
-  padding-block: 2em;
+  gap: 2em;
+  padding-block: 1em;
 
   img {
     cursor: pointer;
     object-fit: contain;
-    filter: grayscale(100%) brightness(100%);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: grayscale(40%) brightness(100%);
+    transition: filter 0.3s ease, transform 0.3s ease, scale .3s;
     cursor: pointer;
 
     &:hover {
       filter: grayscale(0%) brightness(100%);
       transform: translateY(-4px);
+      scale: 1.5;
     }
   }
 }
