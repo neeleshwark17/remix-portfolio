@@ -1,12 +1,12 @@
-import { json, createCookieSessionStorage } from '@remix-run/cloudflare';
+import { json, createCookieSessionStorage } from '@vercel/remix';
 
-export async function action({ request, context }) {
+export async function action({ request }) {
   try {
     const formData = await request.formData();
     const theme = formData.get('theme');
 
-    // For Cloudflare Pages, we need to handle the case where context.cloudflare might not be available
-    const sessionSecret = context?.cloudflare?.env?.SESSION_SECRET || process.env.SESSION_SECRET;
+    const sessionSecret =
+      process.env.SESSION_SECRET || 'default-secret-change-in-production';
 
     const { getSession, commitSession } = createCookieSessionStorage({
       cookie: {
